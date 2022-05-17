@@ -1,14 +1,17 @@
-var searchInputEl = $("#search-input")
-var serachBtnEl = $("#search-button")
-var lat;
-var lon;
+var searchInputEl = $("#userLocation")
+var serachBtnEl = $("#searchButton")
+var latitude;
+var longitude;
 var query;
+var coldTemp;
+var warmTemp;
+var hotTemp;
 
 //Drink api 
 const settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://the-cocktail-db.p.rapidapi.com/random.php",
+	"url": "https://the-cocktail-db.p.rapidapi.com/list.php?c=list",
 	"method": "GET",
 	"headers": {
 		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
@@ -20,10 +23,14 @@ $.ajax(settings).done(function (response) {
 	console.log(response);
 });
 
+function displayDrink(){
+
+}
+
 
 //openWeatherMap API
 function getCurrentWeather(lat, lon) {
-	var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=004649559d0d6a8c8744d45cc6ad0de1"
+	var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=004649559d0d6a8c8744d45cc6ad0de1&units=imperial"
 
 	$.ajax({
 		url: requestUrl,
@@ -40,8 +47,9 @@ function getCoord(city) {
 		url: requestUrl,
 		method: "GET",
 	}).then(function (response) {
-		lat = response.lat;
-		lon = response.lon;
+		latitude = response[0].lat;
+		longitude = response[0].lon;
+		getCurrentWeather(latitude, longitude);
 	})
 }
 
@@ -53,5 +61,5 @@ function updateSearch() {
 serachBtnEl.on("click", function () {
 	updateSearch();
 	getCoord(localStorage.getItem("city-name"));
-	getCurrentWeather(lat, lon);
 })
+
