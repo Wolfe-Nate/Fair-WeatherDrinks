@@ -3,7 +3,7 @@
 const settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://tasty.p.rapidapi.com/recipes/list?from=0&size=40&tags=under_30_minutes",
+	"url": "https://tasty.p.rapidapi.com/feeds/list?size=5&timezone=%2B0700&vegetarian=false&from=0",
 	"method": "GET",
 	"headers": {
 		"X-RapidAPI-Host": "tasty.p.rapidapi.com",
