@@ -1,7 +1,7 @@
 var searchInputEl = $("#search-input")
-var serachBtnEl = $("#9-save")
-var lat;
-var lon;
+var serachBtnEl = $("#searchButton")
+var latitude;
+var longitude;
 var query;
 
 //Drink api 
@@ -22,14 +22,27 @@ $.ajax(settings).done(function (response) {
 
 
 //openWeatherMap API
-function getCurrentWeather(city) {
-	var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=004649559d0d6a8c8744d45cc6ad0de1&units=imperial"
+function getCurrentWeather(lat, lon) {
+	var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=004649559d0d6a8c8744d45cc6ad0de1&units=imperial"
 
 	$.ajax({
 		url: requestUrl,
 		method: "GET",
 	}).then(function (response) {
 		console.log(response);
+	})
+}
+
+function getCoord(city) {
+	var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=004649559d0d6a8c8744d45cc6ad0de1"
+
+	$.ajax({
+		url: requestUrl,
+		method: "GET",
+	}).then(function (response) {
+		latitude = response[0].lat;
+		longitude = response[0].lon;
+		getCurrentWeather(latitude, longitude);
 	})
 }
 
@@ -40,6 +53,7 @@ function updateSearch() {
 
 serachBtnEl.on("click", function () {
 	updateSearch();
-	getCurrentWeather(localStorage.getItem("city-name"));
+	getCoord(localStorage.getItem("city-name"));
+	console.log(latitude, longitude)
 })
 
