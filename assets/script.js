@@ -1,7 +1,7 @@
 var searchInputEl = $("#search-input")
-var serachBtnEl = $("#9-save")
-var lat;
-var lon;
+var serachBtnEl = $("#searchButton")
+var latitude;
+var longitude;
 var query;
 
 //Drink api 
@@ -40,8 +40,9 @@ function getCoord(city) {
 		url: requestUrl,
 		method: "GET",
 	}).then(function (response) {
-		lat = response.lat;
-		lon = response.lon;
+		latitude = response[0].lat;
+		longitude = response[0].lon;
+		getCurrentWeather(latitude, longitude);
 	})
 }
 
@@ -53,6 +54,5 @@ function updateSearch() {
 serachBtnEl.on("click", function () {
 	updateSearch();
 	getCoord(localStorage.getItem("city-name"));
-	getCurrentWeather(lat, lon);
 })
 
