@@ -54,6 +54,5 @@ function updateSearch() {
 serachBtnEl.on("click", function () {
 	updateSearch();
 	getCoord(localStorage.getItem("city-name"));
-	console.log(latitude, longitude)
 })
 
