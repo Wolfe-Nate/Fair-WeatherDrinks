@@ -6,3 +6,15 @@
     min-height: 100%;
     z-index: -1;
   }
+
+  .header {
+      background: none;
+  }
+
+  #search {
+      display: flex;
+      align-items: center;
+      float: left;
+      margin-left: 25rem;
+      margin-top: 20rem;
+  }
