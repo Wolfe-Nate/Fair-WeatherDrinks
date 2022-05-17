@@ -14,3 +14,18 @@ const settings = {
 $.ajax(settings).done(function (response) {
 	console.log(response);
 });
+
+
+//openWeatherMap API
+function getCurrentWeather(lat, lon) {
+	var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=004649559d0d6a8c8744d45cc6ad0de1"
+
+	$.ajax({
+		url: requestUrl,
+		method: "GET",
+	}).then(function (response) {
+		console.log(response);
+	})
+}
+
+getCurrentWeather(41.649212, -87.472565)
