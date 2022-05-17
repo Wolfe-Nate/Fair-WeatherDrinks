@@ -1,13 +1,12 @@
-//Tasty Api 
-//showing on console 
+//Drink api 
 const settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://tasty.p.rapidapi.com/feeds/list?size=5&timezone=%2B0700&vegetarian=false&from=0",
+	"url": "https://the-cocktail-db.p.rapidapi.com/random.php",
 	"method": "GET",
 	"headers": {
-		"X-RapidAPI-Host": "tasty.p.rapidapi.com",
-		"X-RapidAPI-Key": "9fa8565476mshd3470bfe50d4b8ep13befajsnb3b5e303b3f3"
+		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+		"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
 	}
 };
 
