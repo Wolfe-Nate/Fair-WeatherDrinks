@@ -3,12 +3,15 @@ var serachBtnEl = $("#searchButton")
 var latitude;
 var longitude;
 var query;
+var coldTemp;
+var warmTemp;
+var hotTemp;
 
 //Drink api 
 const settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://the-cocktail-db.p.rapidapi.com/random.php",
+	"url": "https://the-cocktail-db.p.rapidapi.com/list.php?c=list",
 	"method": "GET",
 	"headers": {
 		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
@@ -19,6 +22,10 @@ const settings = {
 $.ajax(settings).done(function (response) {
 	console.log(response);
 });
+
+function displayDrink(){
+
+}
 
 
 //openWeatherMap API
