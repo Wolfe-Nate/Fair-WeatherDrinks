@@ -23,8 +23,10 @@ $.ajax(settings).done(function (response) {
 	console.log(response);
 });
 
-function displayDrink(){
-
+function displayDrink() {
+	$("<div/>", {
+		"class": "card",
+	}).appendTo(body)
 }
 
 
