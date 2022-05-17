@@ -1,4 +1,4 @@
-var searchInputEl = $("#search-input")
+var searchInputEl = $("#userLocation")
 var serachBtnEl = $("#searchButton")
 var latitude;
 var longitude;
