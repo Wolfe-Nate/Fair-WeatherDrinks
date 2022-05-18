@@ -7,9 +7,15 @@
     z-index: -1;
 }
 
-#header {
+header {
     background: none;
     font-family: tapestry;
+        text-shadow: .3rem .1rem .2rem rgba(0, 0, 0, 0.534);
+}
+h1 {
+        font-size: 6rem;
+        font-variant: small-caps;
+
 }
 
 #search {
@@ -51,7 +57,7 @@
     -ms-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1); 
-    transition-duration: 500ms;
+    transition-duration: 1000ms;
 }
 
 .card:hover {
@@ -59,4 +65,19 @@
     -webkit-transform: scale(1.1);
     transform: scale(1.1); 
     transition-duration: 500ms;
+}
+
+.btn-info:hover {
+    color: cyan;
+}
+
+.alert-dark {
+    background-color: rgba(58, 103, 133, 0.767);
+    font-family: tapestry;
+    font-size: 2rem;
+    color: white;
+}
+
+.cityRow {
+    font-size: 3rem;
 }
