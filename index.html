@@ -19,7 +19,7 @@
     <title>Fair-Weather Drinks</title>
   </head>
   <header class="container">
-    <h1 class="row d-flex justify-content-center text-light">
+    <h1 class="row d-flex justify-content-center text-light p-5">
       Fair-Weather Drinks
     </h1>
   </header>
@@ -35,20 +35,89 @@
           />
           <a
             ><button
-              class="btn btn-lg btn-info"
+              class="btn btn-lg btn-info p-4 "
               type="button"
-              id="button-addon"
+              id="searchButton"
             >
-              <i class="fa-solid fa-champagne-glasses h-4"></i></button
+              <i class="bi bi-cup-straw"></i></button
           ></a>
         </div>
       </div>
-    </section>
-    <section class="drink-cards p-5 d-flex justify-content-center display-row">
+<body class="header">
+<section class="container">
+    <div class="row inline">
+    <h2 class="m-4 text-light">Popular drinks</h2>
+
+    </div>
+</section>
+    <!-- The video -->
+<video autoplay muted loop id="myVideo">
+    <source src="assets/Images/0001-0322.mp4" type="video/mp4">
+  </video>
+
+    <!--Cards-->
+  <section class="drink-cards p-5 d-flex justify-content-center gap-4 ">
       <div class="card" style="width: 18rem">
+        <img src="..." id = "card1" Class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Drinky</h5>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+          <div class="card" style="width: 18rem">
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">Another Drink</h5>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+          <div class="card" style="width: 18rem">
+        <img src="..." class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Heres one</h5>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+          <div class="card" style="width: 18rem">
+        <img src="..." class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">A fancy drink</h5>
           <p class="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
@@ -65,6 +134,7 @@
         </div>
       </div>
     </section>
+    <footer class="bg-dark text-light">Saved Drinks</footer>
     <!-- The video -->
     <video autoplay muted loop id="myVideo">
       <source src="assets/Images/0001-0322.mp4" type="video/mp4" />
