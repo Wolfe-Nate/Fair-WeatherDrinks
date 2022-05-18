@@ -33,7 +33,6 @@ function displayDrink() {
 		console.log(response);
 		for (var i = 0; i < drinkImgEL.length; i++) {
 			const element = array[i];
-			drinkInfoEL[i].textContent = response.ingredients[i].strDescription
 			
 		}
 	});
@@ -51,6 +50,7 @@ var getDrink = {
 $.ajax(getDrink).done(function (response) {
     console.log(response);
 		for (var i = 0; i < drinkImgEl.length; i++) {
+			
 
 		}
 	});
@@ -61,6 +61,7 @@ $.ajax(getDrink).done(function (response) {
 		for (var i = 0; i < drinkImgEl.length; i++) {
 			drinkImgEl[i].setAttribute("src", response.drinks[i].strDrinkThumb)
 			drinkTitleEl[i].textContent = response.drinks[i].strDrink
+			drinkInfoEL[i].textContent = response.ingredients[i].strDescription
 		}
 	});
 
