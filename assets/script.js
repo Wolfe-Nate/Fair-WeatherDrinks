@@ -1,17 +1,13 @@
-<<<<<<< HEAD
+
 var searchInputEl = $("#userLocation")
-var serachBtnEl = $("#searchButton")
+var searchBtnEl = $("#searchButton")
 var drinkImgEL = $(".card-img-top")
-=======
 var searchInputEl = $("#userLocation");
-<<<<<<< HEAD
-var serachBtnEl = $("#searchButton");
->>>>>>> ac8c66cef142329442f9f198de99b741790deff8
-=======
+var searchBtnEl = $("#searchButton");
 var searchBtnEl = $("#searchButton");
 var drinkImgEl = $(".card-img-top");
 var drinkTitleEl = $(".card-title");
->>>>>>> 73af3c809d39b4722365ffece419f56fbf3b3631
+var drinkInfoEL = $(".card-text")
 var latitude;
 var longitude;
 var query;
@@ -21,10 +17,7 @@ var hotTemp;
 
 //Drink api 
 function displayDrink() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 73af3c809d39b4722365ffece419f56fbf3b3631
+
 	var getDrink = {
 		"async": true,
 		"crossDomain": true,
@@ -35,30 +28,33 @@ function displayDrink() {
 			"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
 		}
 	};
-<<<<<<< HEAD
+
 	$.ajax(getDrink).done(function (response) {
 		console.log(response);
-		for (let i = 0; i < drinkImgEL.length; i++) {
+		for (var i = 0; i < drinkImgEL.length; i++) {
 			const element = array[i];
+			drinkInfoEL[i].textContent = response.ingredients[i].strDescription
 			
 		}
 	});
-=======
-  var getDrink = {
+
+var getDrink = {
     async: true,
     crossDomain: true,
     url: "https://the-cocktail-db.p.rapidapi.com/filter.php?i=Gin",
     method: "GET",
     headers: {
-      "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
-      "X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2",
+    "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+    "X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2",
     },
-  };
-  $.ajax(getDrink).done(function (response) {
+};
+$.ajax(getDrink).done(function (response) {
     console.log(response);
-  });
->>>>>>> ac8c66cef142329442f9f198de99b741790deff8
-=======
+		for (var i = 0; i < drinkImgEl.length; i++) {
+
+		}
+	});
+
 	$.ajax(getDrink).then(function (response) {
 		console.log(response);
 
@@ -67,7 +63,7 @@ function displayDrink() {
 			drinkTitleEl[i].textContent = response.drinks[i].strDrink
 		}
 	});
->>>>>>> 73af3c809d39b4722365ffece419f56fbf3b3631
+
 }
 displayDrink()
 
