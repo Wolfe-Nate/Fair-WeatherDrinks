@@ -1,5 +1,7 @@
-var searchInputEl = $("#userLocation")
-var serachBtnEl = $("#searchButton")
+var searchInputEl = $("#userLocation");
+var searchBtnEl = $("#searchButton");
+var drinkImgEl = $(".card-img-top");
+var drinkTitleEl = $(".card-title");
 var latitude;
 var longitude;
 var query;
@@ -8,7 +10,6 @@ var warmTemp;
 var hotTemp;
 
 //Drink api 
-
 function displayDrink() {
 	var getDrink = {
 		"async": true,
@@ -20,14 +21,21 @@ function displayDrink() {
 			"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
 		}
 	};
-	$.ajax(getDrink).done(function (response) {
+	$.ajax(getDrink).then(function (response) {
 		console.log(response);
+
+		for (var i = 0; i < drinkImgEl.length; i++) {
+			drinkImgEl[i].setAttribute("src", response.drinks[i].strDrinkThumb)
+			drinkTitleEl[i].textContent = response.drinks[i].strDrink
+		}
 	});
 }
-const settings = {
+displayDrink()
+
+var settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://the-cocktail-db.p.rapidapi.com/list.php?c=list",
+	"url": "https://the-cocktail-db.p.rapidapi.com/search.php?i=vodka",
 	"method": "GET",
 	"headers": {
 		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
@@ -38,7 +46,6 @@ const settings = {
 $.ajax(settings).done(function (response) {
 	console.log(response);
 });
-
 
 //openWeatherMap API
 function getCurrentWeather(lat, lon) {
@@ -70,7 +77,7 @@ function updateSearch() {
 	localStorage.setItem("city-name", query);
 }
 
-serachBtnEl.on("click", function () {
+searchBtnEl.on("click", function () {
 	updateSearch();
 	getCoord(localStorage.getItem("city-name"));
 })
