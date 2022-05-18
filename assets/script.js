@@ -107,3 +107,8 @@ searchBtnEl.on("click", function () {
 	getCoord(localStorage.getItem("city-name"));
 	$(".hide").removeClass("hide");
 });
+
+if (localStorage.getItem("city-name")) {
+	weatherEl.removeClass("hide");
+	getCoord(localStorage.getItem("city-name"))
+}
