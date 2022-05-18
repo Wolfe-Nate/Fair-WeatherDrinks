@@ -49,18 +49,26 @@ $.ajax(settings).done(function (response) {
 
 //openWeatherMap API
 function getCurrentWeather(lat, lon) {
-	var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=004649559d0d6a8c8744d45cc6ad0de1&units=imperial"
+	var requestUrl =
+		"https://api.openweathermap.org/data/2.5/weather?lat=" +
+		lat +
+		"&lon=" +
+		lon +
+		"&appid=004649559d0d6a8c8744d45cc6ad0de1&units=imperial";
 
 	$.ajax({
 		url: requestUrl,
 		method: "GET",
 	}).then(function (response) {
 		console.log(response);
-	})
+	});
 }
 
 function getCoord(city) {
-	var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=004649559d0d6a8c8744d45cc6ad0de1"
+	var requestUrl =
+		"http://api.openweathermap.org/geo/1.0/direct?q=" +
+		city +
+		"&limit=5&appid=004649559d0d6a8c8744d45cc6ad0de1";
 
 	$.ajax({
 		url: requestUrl,
@@ -69,7 +77,7 @@ function getCoord(city) {
 		latitude = response[0].lat;
 		longitude = response[0].lon;
 		getCurrentWeather(latitude, longitude);
-	})
+	});
 }
 
 function updateSearch() {
@@ -80,5 +88,5 @@ function updateSearch() {
 searchBtnEl.on("click", function () {
 	updateSearch();
 	getCoord(localStorage.getItem("city-name"));
-})
-
+	$(".hide").removeClass("hide");
+});
