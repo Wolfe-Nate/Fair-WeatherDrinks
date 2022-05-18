@@ -1,13 +1,21 @@
+<<<<<<< HEAD
 
 var searchInputEl = $("#userLocation")
 var searchBtnEl = $("#searchButton")
 var drinkImgEL = $(".card-img-top")
 var searchInputEl = $("#userLocation");
+=======
+var searchInputEl = $(".form-control");
+>>>>>>> e4bfdbc3202c1566de4148a23cbc8fb7da327458
 var searchBtnEl = $("#searchButton");
 var searchBtnEl = $("#searchButton");
 var drinkImgEl = $(".card-img-top");
 var drinkTitleEl = $(".card-title");
+<<<<<<< HEAD
 var drinkInfoEL = $(".card-text")
+=======
+var weatherEl = $(".alert");
+>>>>>>> e4bfdbc3202c1566de4148a23cbc8fb7da327458
 var latitude;
 var longitude;
 var query;
@@ -96,7 +104,13 @@ function getCurrentWeather(lat, lon) {
 		url: requestUrl,
 		method: "GET",
 	}).then(function (response) {
-		console.log(response);
+		console.log(weatherEl.children().eq(2).children().eq(1));
+		weatherEl.children().eq(0).children().eq(0).text(localStorage.getItem("city-name"));
+		weatherEl.children().eq(0).children().eq(1).text(timeConverter(response.sys.sunrise));
+		weatherEl.children().eq(2).children().eq(0).text("Temperature: " + response.main.temp + " °F");
+		weatherEl.children().eq(2).children().eq(1).text("Feels Like: " + response.main.feels_like + " °F");
+		weatherEl.children().eq(2).children().eq(2).attr("src", "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
+
 	});
 }
 
@@ -114,6 +128,16 @@ function getCoord(city) {
 		longitude = response[0].lon;
 		getCurrentWeather(latitude, longitude);
 	});
+}
+
+function timeConverter(timestamp) {
+	var now = new Date(timestamp * 1000);
+	var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	var year = now.getFullYear();
+	var month = months[now.getMonth()];
+	var date = now.getDate();
+	var time = date + ' ' + month + ' ' + year;
+	return time;
 }
 
 function updateSearch() {
