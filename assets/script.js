@@ -1,5 +1,6 @@
 var searchInputEl = $("#userLocation")
 var serachBtnEl = $("#searchButton")
+var drinkImgEL = $(".card-img-top")
 var latitude;
 var longitude;
 var query;
@@ -22,6 +23,10 @@ function displayDrink() {
 	};
 	$.ajax(getDrink).done(function (response) {
 		console.log(response);
+		for (let i = 0; i < drinkImgEL.length; i++) {
+			const element = array[i];
+			
+		}
 	});
 }
 const settings = {
