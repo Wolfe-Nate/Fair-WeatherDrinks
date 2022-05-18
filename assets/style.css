@@ -1,27 +1,27 @@
 #myVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -1;
-  }
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
 
-  .header {
-      background: none;
-      font-family: tapestry;
-  }
+.header {
+  background: none;
+  font-family: tapestry;
+}
 
 body {
-    display: block;
+  display: block;
 
 }
 
-  #search {
-      display: block;
-      align-items: center;
-      float: left;
-      justify-content: left;
-      margin-top: 13%;
-      margin-left: 30%;
-  }
+#search {
+  display: block;
+  align-items: center;
+  float: left;
+  justify-content: left;
+  margin-top: 13%;
+  margin-left: 30%;
+}
