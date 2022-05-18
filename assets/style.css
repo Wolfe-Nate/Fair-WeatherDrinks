@@ -9,13 +9,19 @@
 
   .header {
       background: none;
-      font-family: ;
+      font-family: tapestry;
   }
 
+body {
+    display: block;
+
+}
+
   #search {
-      display: flex;
+      display: block;
       align-items: center;
       float: left;
-      margin-left: 25rem;
-      margin-top: 20rem;
+      justify-content: left;
+      margin-top: 13%;
+      margin-left: 30%;
   }
