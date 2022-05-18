@@ -8,24 +8,38 @@ var warmTemp;
 var hotTemp;
 
 //Drink api 
-const settings = {
+
+function displayDrink(){
+	var getDrink = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://the-cocktail-db.p.rapidapi.com/list.php?c=list",
+	"url": "https://the-cocktail-db.p.rapidapi.com/filter.php?i=Gin",
 	"method": "GET",
 	"headers": {
 		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
 		"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
 	}
 };
-
-$.ajax(settings).done(function (response) {
+$.ajax(getDrink).done(function (response) {
 	console.log(response);
 });
-
-function displayDrink(){
-
 }
+
+// function displayDrinkImg(){
+// 	var getDrinkImg = {
+// 	"async": true,
+// 	"crossDomain": true,
+// 	"url":"https://the-cocktail-db.p.rapidapi.com/filter.php?i=Gin/images/media/drink/vrwquq1478252802.jpg" ,
+// 	"method": "GET",
+// 	"headers": {
+// 		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+// 		"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
+// 	}
+// };
+// $.ajax(getDrinkImg).done(function (response) {
+// 	console.log(response);
+// });
+// }
 
 
 //openWeatherMap API
@@ -59,7 +73,9 @@ function updateSearch() {
 }
 
 serachBtnEl.on("click", function () {
+	displayDrink();
 	updateSearch();
+	displayDrinkImg();
 	getCoord(localStorage.getItem("city-name"));
 })
 
