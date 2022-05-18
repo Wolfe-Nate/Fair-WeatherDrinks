@@ -9,28 +9,20 @@ var hotTemp;
 
 //Drink api 
 
-function displayDrink(){
-	var getDrink = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://the-cocktail-db.p.rapidapi.com/filter.php?i=Gin",
-	"method": "GET",
-	"headers": {
-		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
-		"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
-	}
-};
-$.ajax(getDrink).done(function (response) {
-	console.log(response);
-});
-<<<<<<< HEAD
-
 function displayDrink() {
-	$("<div/>", {
-		"class": "card",
-	}).appendTo(body)
-=======
->>>>>>> 04b48f3554c04d8b6b4e2ec1b34ba1a77eda6dc2
+	var getDrink = {
+		"async": true,
+		"crossDomain": true,
+		"url": "https://the-cocktail-db.p.rapidapi.com/filter.php?i=Gin",
+		"method": "GET",
+		"headers": {
+			"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+			"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
+		}
+	};
+	$.ajax(getDrink).done(function (response) {
+		console.log(response);
+	});
 }
 
 // function displayDrinkImg(){
