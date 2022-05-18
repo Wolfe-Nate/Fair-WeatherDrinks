@@ -10,6 +10,8 @@ var coldTemp;
 var warmTemp;
 var hotTemp;
 
+var errorModal = new bootstrap.Modal($("#error"))
+
 //Drink api 
 function displayDrink() {
 	var getDrink = {
@@ -77,10 +79,20 @@ function getCoord(city) {
 		city +
 		"&limit=5&appid=004649559d0d6a8c8744d45cc6ad0de1";
 
+	if (!localStorage.getItem("city-name")) {
+		console.log("here")
+		errorModal.show();
+		return
+	}
 	$.ajax({
 		url: requestUrl,
 		method: "GET",
 	}).then(function (response) {
+		console.log(response)
+		if (response.length === 0) {
+			errorModal.show();
+			return
+		}
 		latitude = response[0].lat;
 		longitude = response[0].lon;
 		getCurrentWeather(latitude, longitude);
@@ -102,13 +114,15 @@ function updateSearch() {
 	localStorage.setItem("city-name", query);
 }
 
+if (localStorage.getItem("city-name")) {
+	weatherEl.removeClass("hide");
+	getCoord(localStorage.getItem("city-name"))
+}
+
 searchBtnEl.on("click", function () {
 	updateSearch();
 	getCoord(localStorage.getItem("city-name"));
 	$(".hide").removeClass("hide");
 });
 
-if (localStorage.getItem("city-name")) {
-	weatherEl.removeClass("hide");
-	getCoord(localStorage.getItem("city-name"))
-}
+
