@@ -9,6 +9,7 @@ var searchBtnEl = $("#searchButton");
 var drinkImgEl = $(".card-img-top");
 var drinkTitleEl = $(".card-title");
 var drinkInfoEL = $(".card-text")
+var drinkIngEl = $(".list-group-item")
 var weatherEl = $(".alert");
 var latitude;
 var longitude;
@@ -63,34 +64,67 @@ $.ajax(getDrink).done(function (response) {
 		for (var i = 0; i < drinkImgEl.length; i++) {
 			drinkImgEl[i].setAttribute("src", response.drinks[i].strDrinkThumb)
 			drinkTitleEl[i].textContent = response.drinks[i].strDrink
+			
 		}
 	});
 
 }
 displayDrink()
 
+function displayInfo() {
+}
+	var getInfo = {
+		"async": true,
+		"crossDomain": true,
+		"url": "https://the-cocktail-db.p.rapidapi.com/random.php",
+		"method": "GET",
+		"headers": {
+			"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+			"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
+		}
+	};
+
+	$.ajax(getInfo).done(function (response) {
+		console.log(response);
+		for (var i = 0; i < drinkInfoEL.length; i++) {
+			const element = array[i];
+			
+		}
+	});
+
 var getInfo = {
-	async: true,
-	crossDomain: true,
-	url: "https://the-cocktail-db.p.rapidapi.com/lookup.php?i=11007",
-	method: "GET",
-	headers: {
-		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
-		"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
-	}
+    async: true,
+    crossDomain: true,
+    url: "https://the-cocktail-db.p.rapidapi.com/random.php",
+    method: "GET",
+    headers: {
+    "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+    "X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2",
+    },
 };
+$.ajax(getInfo).done(function (response) {
+    console.log(response);
+		for (var i = 0; i < drinkInfoEL.length; i++) {
+			
 
-$.ajax(getInfo).then(function (response) {
-	console.log(response);
-	for (var i = 0; i < drinkImgEl.length; i++) {
-		drinkInfoEL[i].textContent = response.ingredients[i].strInstructions
-	}
-});
+		}
+	});
 
-displayDrink()
+	$.ajax(getInfo).then(function (response) {
+		console.log(response);
+
+		for (var i = 0; i < drinkInfoEL.length; i++) {
+			drinkInfoEL[i].textContent = response.drinks[i].strInstructions
+			drinkIngEl[i].textContent = response.drinks[i].strIngredient1
+
+		
+			
+		}
+	});
 
 
 
+displayInfo()
 //openWeatherMap API
 function getCurrentWeather(lat, lon) {
 	var requestUrl =
