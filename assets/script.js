@@ -24,7 +24,7 @@ $.ajax(settings).done(function (response) {
 });
 
 function displayDrink(){
-
+	drinKUrl = "https://the-cocktail-db.p.rapidapi.com/list.php?c=list" 
 }
 
 
