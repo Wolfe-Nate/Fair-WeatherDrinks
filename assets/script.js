@@ -1,7 +1,18 @@
+
+var searchInputEl = $("#userLocation")
+var searchBtnEl = $("#searchButton")
+var drinkImgEL = $(".card-img-top")
+var searchInputEl = $("#userLocation");
 var searchInputEl = $(".form-control");
+var searchBtnEl = $("#searchButton");
 var searchBtnEl = $("#searchButton");
 var drinkImgEl = $(".card-img-top");
 var drinkTitleEl = $(".card-title");
+var drinkInfoEL = $(".card-text")
+var drinkIngEl = $(".list-group-item1")
+var drinkIngEl2 = $(".list-group-item2")
+var drinkIngEl3 = $(".list-group-item3")
+var drinkIngEl4 = $(".list-group-item4")
 var weatherEl = $(".alert");
 var latitude;
 var longitude;
@@ -14,41 +25,58 @@ var errorModal = new bootstrap.Modal($("#error"))
 
 //Drink api 
 function displayDrink() {
+
 	var getDrink = {
 		"async": true,
 		"crossDomain": true,
-		"url": "https://the-cocktail-db.p.rapidapi.com/filter.php?i=Gin",
+		"url": "https://the-cocktail-db.p.rapidapi.com/randomselection.php",
 		"method": "GET",
 		"headers": {
 			"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
 			"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
 		}
 	};
-	$.ajax(getDrink).then(function (response) {
+
+	$.ajax(getDrink).done(function (response) {
 		console.log(response);
+		for (var i = 0; i < drinkImgEL.length; i++) {
+			const element = getDrink[i];
+			
+		}
+	});
+
+var getDrink = {
+    async: true,
+    crossDomain: true,
+    url: "https://the-cocktail-db.p.rapidapi.com/randomselection.php",
+    method: "GET",
+    headers: {
+    "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+    "X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2",
+    },
+};
+$.ajax(getDrink).done(function (response) {
+
+		for (var i = 0; i < Array.length; i++) {
+		}
+	});
+
+	$.ajax(getDrink).then(function (response) {
+
 
 		for (var i = 0; i < drinkImgEl.length; i++) {
 			drinkImgEl[i].setAttribute("src", response.drinks[i].strDrinkThumb)
 			drinkTitleEl[i].textContent = response.drinks[i].strDrink
+			drinkInfoEL[i].textContent = response.drinks[i].strInstructions
+			drinkIngEl[i].textContent = response.drinks[i].strIngredient1
+			drinkIngEl2[i].textContent = response.drinks[i].strIngredient2
+			drinkIngEl3[i].textContent = response.drinks[i].strIngredient3
+			drinkIngEl4[i].textContent = response.drinks[i].strIngredient4
 		}
 	});
+	
 }
 displayDrink()
-
-var settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://the-cocktail-db.p.rapidapi.com/search.php?i=vodka",
-	"method": "GET",
-	"headers": {
-		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
-		"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
-	}
-};
-
-$.ajax(settings).done(function (response) {
-	console.log(response);
-});
 
 //openWeatherMap API
 function getCurrentWeather(lat, lon) {
