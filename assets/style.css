@@ -38,10 +38,29 @@ h1 {
     background-color: rgba(40, 71, 92, 0.767);
     color: white;
 }
-
-.list-group-item {
+.list-group-item1 {
     background-color: rgba(40, 71, 92, 0.767);
     color: white;
+    list-style: none;
+    padding-left: 1rem;
+}
+.list-group-item2 {
+    background-color: rgba(40, 71, 92, 0.767);
+    color: white;
+    list-style: none;
+    padding-left: 1rem;
+}
+.list-group-item3 {
+    background-color: rgba(40, 71, 92, 0.767);
+    color: white;
+    list-style: none;
+    padding-left: 1rem;
+}
+.list-group-item4 {
+    background-color: rgba(40, 71, 92, 0.767);
+    color: white;
+    list-style: none;
+    padding-left: 1rem;
 }
 
 .card-link {
