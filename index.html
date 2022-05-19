@@ -29,11 +29,17 @@
                 <input type="text" class="form-control"
                     placeholder="Enter your city and we'll find drink recipes based on the weather" />
                 <!-- BUTTON -->
-                <a><button class="btn btn-dark p-3 " type="button" id="searchButton">
+                <a href="#weather"><button class="btn btn-dark p-3 " type="button" id="searchButton">
                         <i class="fa-large fa-solid fa-bounce fa-champagne-glasses"
                             style=" font-size: 1.5rem; color: azure; --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; "></i>
                     </button></a>
             </div>
+        </div>
+        <div class="form-check justify-content-right">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+            <label class="form-check-label" for="flexCheckIndeterminate" style="color:azure">
+                Non-Alcoholic
+            </label>
         </div>
         <!-- VIDEO BACKGROUND -->
         <video autoplay muted loop id="myVideo">
@@ -41,7 +47,7 @@
         </video>
         <!-- WEATHER -->
         <section>
-            <div class="alert alert-dark hide mt-5 container" role="alert">
+            <div class="alert alert-dark hide mt-5 container" role="alert" id="weather">
                 <div class="col ">
                     <h1 class="alert-heading text-capitalize col-3"></h1>
                     <p class="col"></p>
@@ -74,21 +80,22 @@
             <h2 id="popular" class="m-4 text-light">Popular drinks</h2>
         </div>
         <!--Cards-->
-        <section class="drink-cards p-5 d-flex justify-content-center gap-4 ">
-            <div class="card hide" style="width: 18rem">
-                <img src="" id="card" Class="card-img-top" alt="..." />
-                <div class="card-body">
+        <section class="drink-cards p-5 d-flex justify-content-center gap-4 container">
+            <div class="row">
+                    <div class="card hide col" style="width: 18rem">
+                    <img src="" id="card" Class="card-img-top" alt="..." />
+                    <div class="card-body">
                     <h5 class="card-title">Drink</h5>
                     <p class="card-text">
                     </p>
-                </div>
-                <ul class="list-group list-group-flush">
+                    </div>
+                    <ul class="list-group list-group-flush">
                     <li class="list-group-item1">-</li>
                     <li class="list-group-item2">-</li>
                     <li class="list-group-item3">-</li>
                     <li class="list-group-item4">-</li>
-                </ul>
-                <div class="card-body">
+                    </ul>
+                    <div class="card-body">
                     <a href="" target="_blank" class="card-link">Drink link</a>
                 </div>
             </div>
@@ -110,8 +117,8 @@
                 <div class="card-body">
                     <a href="" target="_blank" class="card-link">Drink link</a>
                 </div>
-            </div>
-            <div class="card hide" style="width: 18rem">
+                    </div>
+                    <div class="card hide col" style="width: 18rem">
                 <img src="" class="card-img-top" alt="..." />
                 <div class="card-body">
                     <h5 class="card-title">Heres one</h5>
