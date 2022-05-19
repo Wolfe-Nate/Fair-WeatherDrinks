@@ -90,7 +90,6 @@ function getCoord(city) {
 	}).then(function (response) {
 		console.log(response)
 		if (response.length === 0) {
-			console.log(modalEl)
 			errorModal.show();
 			return
 		}
