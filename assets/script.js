@@ -167,11 +167,18 @@ function pushEnter(event) {
 	}
 }
 
-searchBtnEl.on("click keydown", function (e) {
-
+searchBtnEl.on("click", function () {
 	updateSearch();
 	getCoord(localStorage.getItem("city-name"));
 	$(".hide").removeClass("hide");
 });
+
+$(document).on("keypress", function (e) {
+	if (e.which == 13) {
+		updateSearch();
+		getCoord(localStorage.getItem("city-name"));
+		$(".hide").removeClass("hide");
+	}
+})
 
 
