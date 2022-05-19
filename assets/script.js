@@ -8,11 +8,12 @@ var searchBtnEl = $("#searchButton");
 var searchBtnEl = $("#searchButton");
 var drinkImgEl = $(".card-img-top");
 var drinkTitleEl = $(".card-title");
-var drinkInfoEL = $(".card-text")
-var drinkIngEl = $(".list-group-item1")
-var drinkIngEl2 = $(".list-group-item2")
-var drinkIngEl3 = $(".list-group-item3")
-var drinkIngEl4 = $(".list-group-item4")
+var drinkInfoEL = $(".card-text");
+var drinkIngEl = $(".list-group-item1");
+var drinkIngEl2 = $(".list-group-item2");
+var drinkIngEl3 = $(".list-group-item3");
+var drinkIngEl4 = $(".list-group-item4");
+var drinkLink = $(".card-link");
 var weatherEl = $(".alert");
 var latitude;
 var longitude;
@@ -21,41 +22,42 @@ var coldTemp;
 var warmTemp;
 var hotTemp;
 
-var errorModal = new bootstrap.Modal($("#error"))
+var errorModal = new bootstrap.Modal($("#error"));
 
 //Drink api 
 function displayDrink() {
 
+	var drinkId;
+	// var getDrink = {
+	// 	"async": true,
+	// 	"crossDomain": true,
+	// 	"url": "https://the-cocktail-db.p.rapidapi.com/randomselection.php",
+	// 	"method": "GET",
+	// 	"headers": {
+	// 		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+	// 		"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
+	// 	}
+	// };
+
+	// $.ajax(getDrink).done(function (response) {
+	// 	console.log(response);
+	// 	for (var i = 0; i < drinkImgEL.length; i++) {
+	// 		const element = getDrink[i];
+
+	// 	}
+	// });
+
 	var getDrink = {
-		"async": true,
-		"crossDomain": true,
-		"url": "https://the-cocktail-db.p.rapidapi.com/randomselection.php",
-		"method": "GET",
-		"headers": {
+		async: true,
+		crossDomain: true,
+		url: "https://the-cocktail-db.p.rapidapi.com/randomselection.php",
+		method: "GET",
+		headers: {
 			"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
-			"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
-		}
+			"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2",
+		},
 	};
-
 	$.ajax(getDrink).done(function (response) {
-		console.log(response);
-		for (var i = 0; i < drinkImgEL.length; i++) {
-			const element = getDrink[i];
-			
-		}
-	});
-
-var getDrink = {
-    async: true,
-    crossDomain: true,
-    url: "https://the-cocktail-db.p.rapidapi.com/randomselection.php",
-    method: "GET",
-    headers: {
-    "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
-    "X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2",
-    },
-};
-$.ajax(getDrink).done(function (response) {
 
 		for (var i = 0; i < Array.length; i++) {
 		}
@@ -64,19 +66,66 @@ $.ajax(getDrink).done(function (response) {
 	$.ajax(getDrink).then(function (response) {
 
 
-		for (var i = 0; i < drinkImgEl.length; i++) {
-			drinkImgEl[i].setAttribute("src", response.drinks[i].strDrinkThumb)
-			drinkTitleEl[i].textContent = response.drinks[i].strDrink
-			drinkInfoEL[i].textContent = response.drinks[i].strInstructions
-			drinkIngEl[i].textContent = response.drinks[i].strIngredient1
-			drinkIngEl2[i].textContent = response.drinks[i].strIngredient2
-			drinkIngEl3[i].textContent = response.drinks[i].strIngredient3
-			drinkIngEl4[i].textContent = response.drinks[i].strIngredient4
+		for (var i = 0; i < drinkTitleEl.length; i++) {
+			drinkImgEl[i].setAttribute("src", response.drinks[i].strDrinkThumb);
+			drinkTitleEl[i].textContent = response.drinks[i].strDrink;
+			drinkInfoEL[i].textContent = response.drinks[i].strInstructions;
+			drinkIngEl[i].textContent = response.drinks[i].strIngredient1;
+			drinkIngEl2[i].textContent = response.drinks[i].strIngredient2;
+			drinkIngEl3[i].textContent = response.drinks[i].strIngredient3;
+			drinkIngEl4[i].textContent = response.drinks[i].strIngredient4;
+			drinkLink[i].setAttribute("href", "https://www.thecocktaildb.com/drink/" + response.drinks[i].idDrink);
+
 		}
 	});
-	
+
 }
 displayDrink()
+
+const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://the-cocktail-db.p.rapidapi.com/list.php?c=list",
+	"method": "GET",
+	"headers": {
+		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+		"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
+	}
+};
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+});
+
+const set = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://the-cocktail-db.p.rapidapi.com/list.php?a=list",
+	"method": "GET",
+	"headers": {
+		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+		"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
+	}
+};
+
+$.ajax(set).done(function (response) {
+	console.log(response);
+});
+
+const sett = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://the-cocktail-db.p.rapidapi.com/list.php?i=list",
+	"method": "GET",
+	"headers": {
+		"X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+		"X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2"
+	}
+};
+
+$.ajax(sett).done(function (response) {
+	console.log(response);
+});
 
 //openWeatherMap API
 function getCurrentWeather(lat, lon) {
@@ -91,7 +140,6 @@ function getCurrentWeather(lat, lon) {
 		url: requestUrl,
 		method: "GET",
 	}).then(function (response) {
-		console.log(weatherEl.children().eq(2).children().eq(1));
 		weatherEl.children().eq(0).children().eq(0).text(localStorage.getItem("city-name"));
 		weatherEl.children().eq(0).children().eq(1).text(timeConverter(response.sys.sunrise));
 		weatherEl.children().eq(2).children().eq(0).text("Temperature: " + response.main.temp + " °F");
@@ -116,7 +164,6 @@ function getCoord(city) {
 		url: requestUrl,
 		method: "GET",
 	}).then(function (response) {
-		console.log(response)
 		if (response.length === 0) {
 			errorModal.show();
 			return
