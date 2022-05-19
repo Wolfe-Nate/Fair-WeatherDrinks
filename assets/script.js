@@ -161,7 +161,14 @@ if (localStorage.getItem("city-name")) {
 	getCoord(localStorage.getItem("city-name"))
 }
 
-searchBtnEl.on("click", function () {
+function pushEnter(event) {
+	if (event.key === "13") {
+		someFunction();
+	}
+}
+
+searchBtnEl.on("click keydown", function (e) {
+
 	updateSearch();
 	getCoord(localStorage.getItem("city-name"));
 	$(".hide").removeClass("hide");
