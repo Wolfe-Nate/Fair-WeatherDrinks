@@ -166,7 +166,7 @@ function pushEnter(event) {
 	}
 }
 
-searchBtnEl.on("click", function () {
+$("#form").on("submit", function () {
 	updateSearch();
 	// shows modal if local storage is empty
 	if (searchInputEl.val().length === 0) {
@@ -174,14 +174,15 @@ searchBtnEl.on("click", function () {
 		return
 	}
 	getCoord(query);
+	window.location.href = "#weather";
 	$(".hide").removeClass("hide");
 });
 
-$(document).on("keypress", function (e) {
-	if (e.which == 13) {
-		updateSearch();
-		getCoord(query);
-		window.location.href = "#weather";
-		$(".hide").removeClass("hide");
-	}
-})
+// $(document).on("keypress", function (e) {
+// 	if (e.which == 13) {
+// 		updateSearch();
+// 		getCoord(query);
+// 		window.location.href = "#weather";
+// 		$(".hide").removeClass("hide");
+// 	}
+// })
