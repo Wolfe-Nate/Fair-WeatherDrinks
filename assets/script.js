@@ -13,6 +13,11 @@ var drinkIngEl3 = $(".list-group-item3");
 var drinkIngEl4 = $(".list-group-item4");
 var drinkLink = $(".card-link");
 var weatherEl = $(".alert");
+var cityEl = $("#city")
+var dateEl = $("#date")
+var currentTempEl = $("#temp");
+var feelsLikeTempEl = $("#feels-like");
+var weatherIconEl = $("#weather-icon")
 var latitude;
 var longitude;
 var query;
@@ -84,11 +89,11 @@ function getCurrentWeather(lat, lon) {
 		method: "GET",
 	}).then(function (response) {
 		//displays current weather
-		weatherEl.children().eq(0).children().eq(0).text(localStorage.getItem("city-name"));
-		weatherEl.children().eq(0).children().eq(1).text(timeConverter(response.sys.sunrise));
-		weatherEl.children().eq(2).children().eq(0).text("Temperature: " + response.main.temp + " °F");
-		weatherEl.children().eq(2).children().eq(1).text("Feels Like: " + response.main.feels_like + " °F");
-		weatherEl.children().eq(2).children().eq(2).attr("src", "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
+		cityEl.text(localStorage.getItem("city-name"));
+		dateEl.text(timeConverter(response.sys.sunrise));
+		currentTempEl.text("Temperature: " + response.main.temp + " °F");
+		feelsLikeTempEl.text("Feels Like: " + response.main.feels_like + " °F");
+		weatherIconEl.attr("src", "https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
 		//define filter criteria;
 		if (response.main.temp < 55) {
 			filter = "Coffee%20%2F%20Tea";
@@ -106,7 +111,7 @@ function getCurrentWeather(lat, lon) {
 // gets coordinates for input city
 function getCoord(city) {
 	var requestUrl =
-		"http://api.openweathermap.org/geo/1.0/direct?q=" +
+		"https://api.openweathermap.org/geo/1.0/direct?q=" +
 		city +
 		"&limit=5&appid=004649559d0d6a8c8744d45cc6ad0de1";
 
