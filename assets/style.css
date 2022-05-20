@@ -16,7 +16,10 @@ header {
 h1 {
     font-size: 6rem;
     font-variant: small-caps;
+}
 
+h2 {
+    font-size: 4rem;
 }
 
 #search {
@@ -28,7 +31,8 @@ h1 {
 }
 
 .card {
-    background: none;
+    background: rgba(40, 71, 92, 0.426);
+    text-decoration: none;
 }
 
 .hide {
@@ -78,7 +82,7 @@ h1 {
     -ms-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
-    transition-duration: 1000ms;
+    transition-duration: 100ms;
 }
 
 .card:hover {
@@ -101,4 +105,10 @@ h1 {
 
 .cityRow {
     font-size: 3rem;
+}
+
+footer {
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
 }
