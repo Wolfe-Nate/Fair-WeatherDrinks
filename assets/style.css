@@ -112,3 +112,7 @@ footer {
     display: flex;
     justify-content: center;
 }
+
+#form {
+    width: 250%;
+}
