@@ -120,11 +120,7 @@ function getCoord(city) {
 		city +
 		"&limit=5&appid=004649559d0d6a8c8744d45cc6ad0de1";
 
-	// shows modal if local storage is empty
-	if (!localStorage.getItem("city-name")) {
-		errorModal.show();
-		return
-	}
+
 	//API call
 	$.ajax({
 		url: requestUrl,
@@ -154,10 +150,8 @@ function timeConverter(timestamp) {
 
 function updateSearch() {
 	query = searchInputEl.val();
-	console.log(checkedEl.is(":checked"))
 	if (checkedEl.is(":checked")) {
 		checked = "Non Alcoholic";
-		console.log(checked)
 	}
 }
 
@@ -174,6 +168,11 @@ function pushEnter(event) {
 
 searchBtnEl.on("click", function () {
 	updateSearch();
+	// shows modal if local storage is empty
+	if (searchInputEl.val().length === 0) {
+		errorModal.show();
+		return
+	}
 	getCoord(query);
 	$(".hide").removeClass("hide");
 });
@@ -185,4 +184,4 @@ $(document).on("keypress", function (e) {
 		window.location.href = "#weather";
 		$(".hide").removeClass("hide");
 	}
-});
+})
