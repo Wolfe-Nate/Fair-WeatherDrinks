@@ -25,19 +25,17 @@ var checked;
 var coldTemp;
 var warmTemp;
 var hotTemp;
+var drinkId;
+var i;
 
 var errorModal = new bootstrap.Modal($("#error"));
 
 //Drink api
-function displayDrink(filter) {
+function filterDrinks(filter) {
   var getId = {
     async: true,
     crossDomain: true,
-    url:
-      "https://the-cocktail-db.p.rapidapi.com/filter.php?c=" +
-      filter +
-      "&a=" +
-      checked,
+    url: "https://the-cocktail-db.p.rapidapi.com/filter.php?c=" + filter,
     method: "GET",
     headers: {
       "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
@@ -46,16 +44,16 @@ function displayDrink(filter) {
   };
 
   $.ajax(getId).done(async function (response) {
-    console.log(response);
-    for (var i = 0; i < drinkImgEL.length; i++) {
+    for (i = 0; i < drinkImgEl.length; i++) {
       var randomNum = Math.floor(Math.random() * response.drinks.length);
-
+      var drink = response.drinks.splice(randomNum, 1);
+      console.log(drink);
+      id = drink[0].idDrink;
+      displayDrink(drinkId);
       var getDrink = {
         async: true,
         crossDomain: true,
-        url:
-          "https://the-cocktail-db.p.rapidapi.com/lookup.php?i=" +
-          response.drinks[randomNum].idDrink,
+        url: "https://the-cocktail-db.p.rapidapi.com/lookup.php?i=" + id,
         method: "GET",
         headers: {
           "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
@@ -65,6 +63,7 @@ function displayDrink(filter) {
       };
 
       await $.ajax(getDrink).done(function (response) {
+        console.log(i);
         console.log(response);
         drinkImgEl[i].setAttribute("src", response.drinks[0].strDrinkThumb);
         drinkTitleEl[i].textContent = response.drinks[0].strDrink;
@@ -110,13 +109,13 @@ function getCurrentWeather(lat, lon) {
     );
     //define filter criteria;
     if (response.main.temp < 55) {
-      filter = "Coffee%20%2F%20Tea";
+      sifter = "Coffee%20%2F%20Tea";
     } else if (response.main.temp < 80) {
-      filter = "Cocktail";
+      sifter = "Cocktail";
     } else {
-      filter = "Shake";
+      sifter = "Shake";
     }
-    displayDrink(filter);
+    filterDrinks(sifter);
   });
 }
 
@@ -177,38 +176,9 @@ function updateSearch() {
   if (!checkedEl.is(":checked")) {
     checked = "Alcoholic";
   } else {
-    checked = "Non%20alcoholic";
+    checked = "Non Alcoholic";
   }
 }
-
-const settings = {
-  async: true,
-  crossDomain: true,
-  url: "https://the-cocktail-db.p.rapidapi.com/filter.php?c=Cocktail&/filter.php?a=Non%20alcoholic",
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
-    "X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2",
-  },
-};
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-const setting = {
-  async: true,
-  crossDomain: true,
-  url: "https://the-cocktail-db.p.rapidapi.com/filter.php?c=Cocktail&/filter.php?a=Alcoholic",
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
-    "X-RapidAPI-Key": "e692b18ceemshac75a665f1c063ap11319ejsnf2e882d220d2",
-  },
-};
-
-$.ajax(setting).done(function (response) {
-  console.log(response);
-});
 
 if (localStorage.getItem("city-name")) {
   $(".hide").removeClass("hide");
