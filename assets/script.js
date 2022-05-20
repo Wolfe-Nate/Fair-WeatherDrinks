@@ -191,9 +191,7 @@ function pushEnter(event) {
   }
 }
 
-<<<<<<< HEAD
-$("#form").on("submit", function (event) {
-  event.preventDefault();
+searchBtnEl.on("click", function () {
   updateSearch();
   // shows modal if local storage is empty
   if (searchInputEl.val().length === 0) {
@@ -201,26 +199,14 @@ $("#form").on("submit", function (event) {
     return;
   }
   getCoord(query);
-  window.location.href = "#weather";
   $(".hide").removeClass("hide");
-=======
-searchBtnEl.on("click", function () {
-	updateSearch();
-	// shows modal if local storage is empty
-	if (searchInputEl.val().length === 0) {
-		errorModal.show();
-		return
-	}
-	getCoord(query);
-	$(".hide").removeClass("hide");
->>>>>>> 0b8adcdb59dd6a73358f8eb89e8188db6f23c191
 });
 
 $(document).on("keypress", function (e) {
-	if (e.which == 13) {
-		updateSearch();
-		getCoord(query);
-		window.location.href = "#weather";
-		$(".hide").removeClass("hide");
-	}
-})
+  if (e.which == 13) {
+    updateSearch();
+    getCoord(query);
+    window.location.href = "#weather";
+    $(".hide").removeClass("hide");
+  }
+});
