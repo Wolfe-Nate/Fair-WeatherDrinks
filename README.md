@@ -4,7 +4,7 @@
 
 Input your current location to see a list of drinks that will pair well with your current weather. We wanted to give an ideal drink recipe for our users. Together we decided to build this as an easy way for ideas and recipes to be combined about what to drink. We have learned how to pull information from more than one API to use the data in an integrated way.
 
-## Istallation
+## Installation
 
 Our application will be deployed through github.com.
 follow this link https://wolfe-nate.github.io/Project-1/
