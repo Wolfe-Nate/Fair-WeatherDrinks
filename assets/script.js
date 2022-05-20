@@ -134,6 +134,7 @@ function getCoord(city) {
     city +
     "&limit=5&appid=004649559d0d6a8c8744d45cc6ad0de1";
 
+<<<<<<< HEAD
   // shows modal if local storage is empty
   if (!localStorage.getItem("city-name")) {
     errorModal.show();
@@ -156,6 +157,24 @@ function getCoord(city) {
     longitude = response[0].lon;
     getCurrentWeather(latitude, longitude);
   });
+=======
+
+	//API call
+	$.ajax({
+		url: requestUrl,
+		method: "GET",
+	}).then(function (response) {
+		// if typo in city, show modal
+		if (response.length === 0) {
+			errorModal.show();
+			return
+		}
+		localStorage.setItem("city-name", response[0].name);
+		latitude = response[0].lat;
+		longitude = response[0].lon;
+		getCurrentWeather(latitude, longitude);
+	});
+>>>>>>> 384363993e80e3608e8449b298e1edbab4ad3c12
 }
 
 function timeConverter(timestamp) {
@@ -182,12 +201,19 @@ function timeConverter(timestamp) {
 }
 
 function updateSearch() {
+<<<<<<< HEAD
   query = searchInputEl.val();
   console.log(checkedEl.is(":checked"));
   if (checkedEl.is(":checked")) {
     checked = "Non Alcoholic";
     console.log(checked);
   }
+=======
+	query = searchInputEl.val();
+	if (checkedEl.is(":checked")) {
+		checked = "Non Alcoholic";
+	}
+>>>>>>> 384363993e80e3608e8449b298e1edbab4ad3c12
 }
 
 if (localStorage.getItem("city-name")) {
@@ -200,6 +226,7 @@ function pushEnter(event) {
   }
 }
 
+<<<<<<< HEAD
 searchBtnEl.on("click", function () {
   updateSearch();
   getCoord(query);
@@ -214,3 +241,25 @@ $(document).on("keypress", function (e) {
     $(".hide").removeClass("hide");
   }
 });
+=======
+$("#form").on("submit", function () {
+	updateSearch();
+	// shows modal if local storage is empty
+	if (searchInputEl.val().length === 0) {
+		errorModal.show();
+		return
+	}
+	getCoord(query);
+	window.location.href = "#weather";
+	$(".hide").removeClass("hide");
+});
+
+// $(document).on("keypress", function (e) {
+// 	if (e.which == 13) {
+// 		updateSearch();
+// 		getCoord(query);
+// 		window.location.href = "#weather";
+// 		$(".hide").removeClass("hide");
+// 	}
+// })
+>>>>>>> 384363993e80e3608e8449b298e1edbab4ad3c12
