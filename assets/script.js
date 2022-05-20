@@ -21,7 +21,7 @@ var weatherIconEl = $("#weather-icon")
 var latitude;
 var longitude;
 var query;
-var checked;
+var checked = "Alcoholic";
 var coldTemp;
 var warmTemp;
 var hotTemp;
@@ -44,12 +44,11 @@ function filterDrinks(filter) {
 	};
 
 	$.ajax(getId).done(async function (response) {
-		for (i = 0; i < drinkImgEl.length; i++) {
+		var drinkCount = 0
+		while (drinkCount < 4) {
 			var randomNum = Math.floor(Math.random() * response.drinks.length)
 			var drink = response.drinks.splice(randomNum, 1)
-			console.log(drink)
 			id = drink[0].idDrink;
-			displayDrink(drinkId)
 			var getDrink = {
 				async: true,
 				crossDomain: true,
@@ -62,16 +61,17 @@ function filterDrinks(filter) {
 			};
 
 			await $.ajax(getDrink).done(function (response) {
-				console.log(i)
-				console.log(response)
-				drinkImgEl[i].setAttribute("src", response.drinks[0].strDrinkThumb);
-				drinkTitleEl[i].textContent = response.drinks[0].strDrink;
-				drinkInfoEL[i].textContent = response.drinks[0].strInstructions;
-				drinkIngEl[i].textContent = response.drinks[0].strIngredient1;
-				drinkIngEl2[i].textContent = response.drinks[0].strIngredient2;
-				drinkIngEl3[i].textContent = response.drinks[0].strIngredient3;
-				drinkIngEl4[i].textContent = response.drinks[0].strIngredient4;
-				drinkLink[i].setAttribute("href", "https://www.thecocktaildb.com/drink/" + response.drinks[0].idDrink);
+				if (response.drinks[0].strAlcoholic === checked) {
+					drinkImgEl[drinkCount].setAttribute("src", response.drinks[0].strDrinkThumb);
+					drinkTitleEl[drinkCount].textContent = response.drinks[0].strDrink;
+					drinkInfoEL[drinkCount].textContent = response.drinks[0].strInstructions;
+					drinkIngEl[drinkCount].textContent = response.drinks[0].strIngredient1;
+					drinkIngEl2[drinkCount].textContent = response.drinks[0].strIngredient2;
+					drinkIngEl3[drinkCount].textContent = response.drinks[0].strIngredient3;
+					drinkIngEl4[drinkCount].textContent = response.drinks[0].strIngredient4;
+					drinkLink[drinkCount].setAttribute("href", "https://www.thecocktaildb.com/drink/" + response.drinks[0].idDrink);
+					drinkCount++;
+				}
 
 			});
 		}
@@ -154,10 +154,10 @@ function timeConverter(timestamp) {
 
 function updateSearch() {
 	query = searchInputEl.val();
-	if (!checkedEl.is(":checked")) {
-		checked = "Alcoholic"
-	} else {
-		checked = "Non Alcoholic"
+	console.log(checkedEl.is(":checked"))
+	if (checkedEl.is(":checked")) {
+		checked = "Non Alcoholic";
+		console.log(checked)
 	}
 }
 
@@ -182,6 +182,7 @@ $(document).on("keypress", function (e) {
 	if (e.which == 13) {
 		updateSearch();
 		getCoord(query);
+		window.location.href = "#weather";
 		$(".hide").removeClass("hide");
 	}
-})
+});
