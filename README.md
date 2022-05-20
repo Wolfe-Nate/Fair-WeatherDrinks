@@ -7,17 +7,17 @@ Input your current location to see a list of drinks that will pair well with you
 ## Installation
 
 Our application will be deployed through github.com.
-follow this link https://wolfe-nate.github.io/Project-1/
+follow this link https://wolfe-nate.github.io/Fair-WeatherDrinks/
 
 ## Usage
 
-Input current location into the white bar onscreen, then click the button on the right for your drink list to show up.
+Input current location into the white bar onscreen, then press ENTER, or click the button on the right for your drink list to show up.
 
-![FairWeather searchbar](assets/Images/Screenshot%202022-05-18%20130401.png)
+![FairWeather searchbar](assets/Images/screenshot.1.png)
 
-Choose between the choices provided on the newly shown cards.
+Choose between the choices provided on the newly shown cards. Click on the cards shown to follow the link to recipe.
 
-![FairWeather cards](assets/Images/Screenshot%20.2.png)
+![FairWeather cards](assets/Images/Screenshot3.png)
 
 ## Credits
 
